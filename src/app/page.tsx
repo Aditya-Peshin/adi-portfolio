@@ -33,7 +33,6 @@ export default function HomePage() {
         </motion.p>
       </section>
 
-      {/* Section cards */}
       <motion.section
         className="grid gap-4 sm:grid-cols-3"
         initial="hidden"
