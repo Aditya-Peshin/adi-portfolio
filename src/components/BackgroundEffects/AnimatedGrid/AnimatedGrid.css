@@ -1,0 +1,59 @@
+:root {
+    --num-rows: 20;
+    --num-cols: 10;
+    --tile-size: 50px;
+    --mouse-X: 50%;
+    --mouse-Y: 50%;
+    --effect-opacity: 1;
+    --gradient-size: 180px;
+}
+
+#tileSetParent {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#tileSet {
+    display: grid;
+    background-color: black;
+    grid-template-rows: repeat(var(--num-rows), var(--tile-size));
+    grid-template-columns: repeat(var(--num-cols), var(--tile-size));
+    grid-gap: 1px;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.tile {
+    position: relative;
+    z-index: 2;
+    background-color: black;
+}
+
+#tileSet::before {
+    background: radial-gradient(circle var(--gradient-size) at var(--mouse-X) var(--mouse-Y),
+            DarkGray,
+            transparent);
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: var(--effect-opacity);
+    transition: opacity 0.1s ease-in-out
+}
+
+#foreground-content {
+    position: relative;
+    z-index: 3;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
